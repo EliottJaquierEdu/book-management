@@ -1,3 +1,15 @@
-$color-primary: #0074d9;
-$color-secondary: #7fdbff;
-$color-tertiary: #39cccc;
+/* COLORS */
+$primary: hsl(153, 100%, 33%);
+$primary-light: hsl(153, 35%, 82%);
+$text: hsl(153, 10%, 20%);
+$dark: hsl(345, 6%, 13%);
+$grey: hsl(0, 0%, 84%);
+$light: hsl(0, 0%, 87%);
+$light-white: hsl(0, 0%, 94%);
+$white: hsl(0, 0%, 100%);
+
+$link-color__hover: hsl(153, 100%, 22%);
+$link-color__focus: hsl(153, 100%, 44%);
+$color-accent-light: hsl(153, 100%, 44%);
+$color-accent-dark: hsl(153, 100%, 22%);
+$color-accent-darker: hsl(153, 100%, 11%);
