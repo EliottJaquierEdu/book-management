@@ -1,0 +1,27 @@
+@import "variables";
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: $lightest;
+  color: $dark;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-content{
+    margin: 0 $content-margin;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: lighter;
+  margin: 0;
+  padding: 0;
+}

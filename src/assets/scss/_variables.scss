@@ -3,13 +3,24 @@ $primary: hsl(153, 100%, 33%);
 $primary-light: hsl(153, 35%, 82%);
 $text: hsl(153, 10%, 20%);
 $dark: hsl(345, 6%, 13%);
-$grey: hsl(0, 0%, 84%);
+$light-dark: hsl(0, 0%, 84%);
 $light: hsl(0, 0%, 87%);
-$light-white: hsl(0, 0%, 94%);
-$white: hsl(0, 0%, 100%);
+$lighter: hsl(0, 0%, 94%);
+$lightest: hsl(0, 0%, 100%);
 
 $link-color__hover: hsl(153, 100%, 22%);
 $link-color__focus: hsl(153, 100%, 44%);
 $color-accent-light: hsl(153, 100%, 44%);
 $color-accent-dark: hsl(153, 100%, 22%);
 $color-accent-darker: hsl(153, 100%, 11%);
+
+/* SPACING */
+$content-margin: 1.5rem;
+$corner-radius: 4px;
+$corner-thickness: 2px;
+$spacing-small: 3px;
+$spacing: 4px;
+$spacing-separation: 12px;
+
+/* TEXT SIZES */
+$interactable-text-size: 1rem;

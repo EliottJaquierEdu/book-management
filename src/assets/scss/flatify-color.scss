@@ -1,0 +1,30 @@
+@import 'variables';
+
+:root {
+  --flatify__link-color: $primary;
+  --flatify__link-color__hover: $link-color__hover;
+  --flatify__link-color__focus: $link-color__focus;
+
+  --flatify__color-accent-primary: $primary;
+  --flatify__color-accent-light: $color-accent-light;
+  --flatify__color-accent-dark: $color-accent-dark;
+  --flatify__color-accent-darker: $color-accent-darker;
+
+  --flatify__color-light-primary: $primary-light;
+  --flatify__color-light-light: $lightest;
+  --flatify__color-light-dark: $lighter;
+  --flatify__color-light-darker: $light-dark;
+  --flatify__color-dark-primary: $dark;
+  --flatify__color-dark-light: $light;
+  --flatify__color-dark-dark: $dark;
+  --flatify__color-dark-darker: $dark;
+
+  --flatify__txt-color: $text;
+  --flatify__txt-color-light: $light-dark;
+  --flatify__txt-color-dark: $dark;
+  --flatify__txt-color-inverted: $lightest;
+  --flatify__bg-color: $lightest;
+  --flatify__bg-color-dark: $light;
+  --flatify__bg-color-darker: $lighter;
+  --flatify__bg-color-darkest: $light-dark;
+}
