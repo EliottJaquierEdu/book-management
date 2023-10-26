@@ -9,11 +9,11 @@ const routes = [
         name: "SearchPage",
         component: () => import("./pages/SearchPage.vue")
     },
-    /*{
-      path: "/book/:id",
-      name: "BookPage",
-      component: () => import("./pages/BookPage.vue")
-    }*/
+    {
+        path: "/book/:id",
+        name: "BookDetailPage",
+        component: () => import("./pages/BookDetailPage.vue")
+    }
 ];
 
 const router = createRouter({

@@ -71,7 +71,7 @@
     "genres": [
       "Fiction",
       "Horreur",
-      "Apocalyptique et post-apocalyptique",
+      "Apocalyptique",
       "Thrillers",
       "Suspense"
     ],
@@ -93,8 +93,8 @@
       "Literraire",
       "Historique",
       "Politique",
-      "Littérature féminine",
-      "Littérature afro-américaine",
+      "Féminine",
+      "Afro-américaine",
       "Classiques"
     ],
     "link": "https://play.google.com/store/books/details/Alice_Walker_Meridian?id=4QrR2XWHBBIC",
@@ -115,7 +115,7 @@
       "Action et aventure",
       "Fantasy et magie",
       "Folklore et mythologie",
-      "Contes de fées et folkloriques"
+      "Contes de fées"
     ],
     "link": "https://play.google.com/store/books/details/Dave_Duncan_Faery_Lands_Forlorn?id=EmMkAwAAQBAJ",
     "image": "https://books.google.com/books/content/images/frontcover/EmMkAwAAQBAJ?fife=w480-h690",
@@ -133,8 +133,7 @@
     "genres": [
       "Fiction",
       "Science-fiction",
-      "Fantasy",
-      "Hard science-fiction"
+      "Fantasy"
     ],
     "link": "https://play.google.com/store/books/details/Theodore_Sturgeon_More_Than_Human?id=0OhIANMXRZsC",
     "image": "https://books.google.com/books/publisher/content/images/frontcover/0OhIANMXRZsC?fife=w480-h690",
@@ -153,7 +152,7 @@
       "Fiction",
       "Distopie",
       "Science-fiction",
-      "Apocalyptique et post-apocalyptique"
+      "Apocalyptique"
     ],
     "link": "https://play.google.com/store/books/details/Poul_Anderson_Orbit_Unlimited?id=wUROBQAAQBAJ",
     "image": "https://books.google.com/books/publisher/content/images/frontcover/wUROBQAAQBAJ?fife=w480-h690",
@@ -252,7 +251,8 @@
         "Informatique",
         "Web",
         "Internet",
-        "Conception et développement web"
+        "Conception",
+        "Développement web"
     ],
     "link": "https://play.google.com/store/books/details/Carine_Lallemand_M%C3%A9thodes_de_design_UX?id=6CJtDwAAQBAJ&hl=fr_CH&gl=US",
     "image": "https://books.google.com/books/publisher/content/images/frontcover/6CJtDwAAQBAJ?fife=w480-h690",

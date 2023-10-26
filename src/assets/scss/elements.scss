@@ -41,3 +41,12 @@ h3 {
 .red {
   color: $red;
 }
+
+.spacing{
+    margin: $spacing-separation;
+}
+
+.flat-border{
+  border: $corner-thickness solid $light-dark;
+  border-radius: $corner-radius;
+}
