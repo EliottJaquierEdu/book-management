@@ -10,9 +10,9 @@ defineProps<{ book:Book }>()
       <div class="img-container">
         <div><img :src="book.image" :alt="book.title"></div>
       </div>
-      <h3>{{ book.title }}</h3>
-      <p>{{ book.author }}</p>
-      <p>Disponible</p>
+      <div class="book-title"><h3>{{ book.title }}</h3></div>
+      <div class="book-author">{{ book.author }}</div>
+      <div class="book-availability"><i class="fa-solid fa-circle available"></i> Disponible</div>
     </a>
   </div>
 </template>
@@ -21,6 +21,7 @@ defineProps<{ book:Book }>()
 @import "src/assets/scss/variables";
 .book-cover{
   width: 175px;
+  margin-bottom: $content-margin;
   .img-container{
     display: flex;
     flex-direction: column;
@@ -29,6 +30,29 @@ defineProps<{ book:Book }>()
     img{
       border: $corner-thickness solid $light-dark;
       border-radius: $corner-radius;
+    }
+  }
+  .book-title{
+    margin-top: $spacing;
+    h3{
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: $interactable-text-size;
+      font-weight: bold;
+    }
+  }
+  .book-author{
+    font-size: $interactable-text-size;
+    color: $text;
+  }
+  .book-availability{
+    font-size: $small-text-size;
+    color: $text-light;
+    i{
+      &.available{
+        color: $primary;
+      }
     }
   }
 }
