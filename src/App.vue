@@ -1,8 +1,10 @@
 <script setup lang="ts">
-import SearchPage from "./pages/SearchPage.vue";
+import TopBar from "./components/TopBar.vue";
 </script>
 
 <template>
-  <!--<HelloWorld msg="Vite + Vue" />-->
-  <SearchPage></SearchPage>
+  <TopBar></TopBar>
+  <div class="main-content">
+    <router-view></router-view>
+  </div>
 </template>

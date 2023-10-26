@@ -125,25 +125,22 @@ fetchBooks();
 </script>
 
 <template>
-  <TopBar></TopBar>
-  <div class="main-content">
-    <SearchBar></SearchBar>
-    <h2>Filtres</h2>
-    <div class="filters">
-      <div v-for="filter in filtersList" class="filter-category">
-        <h3>{{ filter.name }}</h3>
-        <div class="filter-category-items">
-          <div class="filter-category-item" v-for="filterItem in filter.filters">
-            <CheckableTag :label="filterItem.name" :value="filterItem.value"></CheckableTag>
-          </div>
+  <SearchBar></SearchBar>
+  <h2>Filtres</h2>
+  <div class="filters">
+    <div v-for="filter in filtersList" class="filter-category">
+      <h3>{{ filter.name }}</h3>
+      <div class="filter-category-items">
+        <div class="filter-category-item" v-for="filterItem in filter.filters">
+          <CheckableTag :label="filterItem.name" :value="filterItem.value"></CheckableTag>
         </div>
       </div>
     </div>
-    <h2>Résultats</h2>
-    <div class="books">
-      <div class="book-result" v-for="book in books">
-        <BookCover :book="book"></BookCover>
-      </div>
+  </div>
+  <h2>Résultats</h2>
+  <div class="books">
+    <div class="book-result" v-for="book in books">
+      <BookCover :book="book"></BookCover>
     </div>
   </div>
 </template>
