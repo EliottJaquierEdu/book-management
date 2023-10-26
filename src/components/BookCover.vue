@@ -1,18 +1,45 @@
-<script setup lang="ts">
+<script lang="ts">
 import Book from "../models/Book";
+import {ref, toRefs} from 'vue'
 
-defineProps<{ book:Book }>()
+function getBookStatusAvailabilityClass(book: Book) {
+  switch (book.status) {
+    case "Réservable":
+      return "green";
+    case "Disponible":
+      return "orange";
+    case "En transit":
+      return "orange";
+    case "Plus en stock":
+      return "red";
+    default:
+      return "red";
+  }
+}
+
+export default {
+  props: {
+    book: (Object as () => Book)!
+  },
+  setup(props) {
+    const { book } = toRefs(props)
+    const availabilityClass = ref(getBookStatusAvailabilityClass(book.value!));
+    return {
+      availabilityClass
+    }
+  },
+}
 </script>
 
 <template>
   <div class="book-cover">
     <a href="#">
       <div class="img-container">
-        <div><img :src="book.image" :alt="book.title"></div>
+        <div><img :src="book!.image" :alt="book!.title"></div>
       </div>
-      <div class="book-title"><h3>{{ book.title }}</h3></div>
-      <div class="book-author">{{ book.author }}</div>
-      <div class="book-availability"><i class="fa-solid fa-circle available"></i> Disponible</div>
+      <div class="book-title"><h3>{{ book!.title }}</h3></div>
+      <div class="book-author">{{ book!.author }}</div>
+      <div class="book-availability"><i class="fa-solid fa-circle" :class="availabilityClass"></i> {{ book!.status }}</div>
     </a>
   </div>
 </template>
@@ -49,11 +76,6 @@ defineProps<{ book:Book }>()
   .book-availability{
     font-size: $small-text-size;
     color: $text-light;
-    i{
-      &.available{
-        color: $primary;
-      }
-    }
   }
 }
 </style>

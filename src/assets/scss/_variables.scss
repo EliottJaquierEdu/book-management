@@ -1,6 +1,7 @@
 /* COLORS */
 $primary: hsl(153, 100%, 33%);
 $primary-light: hsl(153, 35%, 82%);
+$complementary : hsl(8, 100%, 33%);
 $text: hsl(153, 10%, 20%);
 $text-light: hsl(345, 6%, 56.5%);
 $dark: hsl(345, 6%, 13%);
@@ -14,6 +15,10 @@ $link-color__focus: hsl(153, 100%, 44%);
 $color-accent-light: hsl(153, 100%, 44%);
 $color-accent-dark: hsl(153, 100%, 22%);
 $color-accent-darker: hsl(153, 100%, 11%);
+
+$green: $primary;
+$orange: hsl(50, 100%, 33%);
+$red: $complementary;
 
 /* SPACING */
 $content-margin: 1.5rem;

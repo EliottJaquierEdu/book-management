@@ -2,10 +2,7 @@
   {
     "title": "Sisters of the Lost Nation",
     "author": "Nick Medina",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "18 avr. 2023",
     "editor": "Penguin",
     "pages": 352,
@@ -25,10 +22,7 @@
   {
     "title": "Les Contes de Beedle le Barde: Harry Potter Livre de la Bibliothèque de Poudlard",
     "author": "J.K. Rowling",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "9 mai 2016",
     "editor": "Pottermore Publishing",
     "pages": 128,
@@ -48,10 +42,7 @@
   {
     "title": "Harry Potter et la Coupe de Feu",
     "author": "J.K. Rowling",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "8 déc. 2015",
     "editor": "Pottermore Publishing",
     "pages": 779,
@@ -72,10 +63,7 @@
   {
     "title": "The Stand",
     "author": "Stephen King",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "24 juin 2008",
     "editor": "Anchor",
     "pages": 1200,
@@ -95,10 +83,7 @@
   {
     "title": "Meridian",
     "author": "Alice Walker",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "22 nov. 2011",
     "editor": "Open Road Media",
     "pages": 242,
@@ -120,10 +105,7 @@
   {
     "title": "Faery Lands Forlorn",
     "author": "Dave Duncan",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "1 avr. 2014",
     "editor": "Open Road Media",
     "pages": 408,
@@ -143,9 +125,7 @@
   {
     "title": "More Than Human",
     "author": "Theodore Sturgeon",
-    "status": [
-      "Disponible"
-    ],
+    "status": "Disponible",
     "date": "30 avr. 2013",
     "editor": "Open Road Media",
     "pages": 186,
@@ -164,9 +144,7 @@
   {
     "title": "Orbit Unlimited",
     "author": "Poul Anderson",
-    "status": [
-      "En transit"
-    ],
+    "status": "En transit",
     "date": "30 déc. 2014",
     "editor": "Open Road Media",
     "pages": 175,
@@ -185,9 +163,7 @@
   {
     "title": "War Dances: Stories and Poems",
     "author": "Sherman Alexie",
-    "status": [
-      "Plus en stock"
-    ],
+    "status": "Plus en stock",
     "date": "15 oct. 2013",
     "editor": "Open Road Media",
     "pages": 210,
@@ -206,10 +182,7 @@
   {
     "title": "Letters to Solovine, 1906–1955",
     "author": "Albert Einstein",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "27 sept. 2011",
     "editor": "Open Road Media",
     "pages": 184,
@@ -229,10 +202,7 @@
   {
     "title": "Marvel Studios The Marvel Cinematic Universe An Official Timeline",
     "author": "Marvel",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "24 oct. 2023",
     "editor": "Penguin",
     "pages": 344,
@@ -254,10 +224,7 @@
   {
     "title": "Responsive web design: A book apart n°4, Édition 2",
     "author": "Ethan Marcotte",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "23 févr. 2017",
     "editor": "Editions Eyrolles",
     "pages": 168,
@@ -276,10 +243,7 @@
   {
     "title": "Méthodes de design UX: 30 méthodes fondamentales pour concevoir des expériences optimales, Édition 2",
     "author": "Carine Lallemand",
-    "status": [
-      "Disponible",
-      "Réservable"
-    ],
+    "status": "Réservable",
     "date": "6 sept. 2018",
     "editor": "Editions Eyrolles",
     "pages": 712,
