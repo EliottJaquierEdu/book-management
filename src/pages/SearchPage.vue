@@ -3,6 +3,8 @@ import {ref} from 'vue'
 import TopBar from "../components/TopBar.vue";
 import SearchBar from "../components/SearchBar.vue";
 import CheckableTag from "../components/CheckableTag.vue";
+import BooksService from "../services/BooksService.ts";
+import BookCover from "../components/BookCover.vue";
 
 const filtersList = ref([
   {
@@ -111,6 +113,17 @@ const filtersList = ref([
   }
 ]);
 
+const books: any = ref(null);
+function fetchBooks(){
+  console.log("fetchBooks");
+  new BooksService().getBooks().then((response) => {
+    console.log(response);
+    books.value = response;
+  }).catch((error) => {
+    console.log(error);
+  });
+}
+fetchBooks();
 </script>
 
 <template>
@@ -129,6 +142,11 @@ const filtersList = ref([
       </div>
     </div>
     <h2>Résultats</h2>
+    <div class="books">
+      <div class="book-result" v-for="book in books">
+        <BookCover :book="book"></BookCover>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -148,8 +166,12 @@ const filtersList = ref([
     margin: $spacing-small 0;
   }
 }
-/*.filter-category-items::after {
-  content: "";
-  flex: auto;
-}*/
+.books{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .book-result{
+    margin-bottom: $spacing-separation;
+  }
+}
 </style>
