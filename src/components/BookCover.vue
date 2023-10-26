@@ -49,6 +49,9 @@ export default {
 .book-cover{
   width: 175px;
   margin-bottom: $content-margin;
+  a{
+    text-decoration: none;
+  }
   .img-container{
     display: flex;
     flex-direction: column;
@@ -76,6 +79,12 @@ export default {
   .book-availability{
     font-size: $small-text-size;
     color: $text-light;
+  }
+  /* TRANSITION */
+  &:hover{
+    transition: all 0.1s;
+    background-color: $lighter;
+    border-radius: $corner-radius;
   }
 }
 </style>
