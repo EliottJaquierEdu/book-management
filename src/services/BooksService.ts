@@ -5,6 +5,7 @@ export default class BooksService {
         const response = await fetch('src/assets/books.json');
         return await response.json();
     }
+
     public static getBookStatusColor(book: Book): string {
         switch (book.status) {
             case "Réservable":

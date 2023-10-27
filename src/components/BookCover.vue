@@ -66,6 +66,7 @@ export default {
       text-overflow: ellipsis;
       font-size: $interactable-text-size;
       font-weight: bold;
+      color: $text;
     }
   }
   .book-author{

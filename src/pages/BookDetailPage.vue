@@ -4,20 +4,38 @@ import {ref} from "vue";
 import Book from "../models/Book.ts";
 import {useRoute} from "vue-router";
 import CheckableTag from "../components/CheckableTag.vue";
+import SelectableButton from "../components/SelectableButton.vue";
 
 export default {
-  components: {CheckableTag},
+  components: {SelectableButton, CheckableTag},
   setup() {
     const book = ref(undefined as unknown as Book);
     const isBookFound = ref(true);
     const route = useRoute()
     const availabilityClass = ref("");
     const buttonLabel = ref("");
+    const librariesAvailable = [
+      {
+        "name": "CPNV D'Yverdon",
+        "number": 4
+      },
+      {
+        "name": "CPNV De Sainte-Croix",
+        "number": 1
+      },
+      {
+        "name": "CPNV De Payerne",
+        "number": 0
+      }
+    ]
     BooksService.getBooks().then((books) => {
       const findBool = (books.find((book) => book.title === route.params["id"])) as Book | undefined;
       isBookFound.value = findBool !== undefined;
       book.value = findBool as Book;
-      availabilityClass.value = BooksService.getBookStatusColor(book.value!)+ "-bg";
+      availabilityClass.value = BooksService.getBookStatusColor(book.value!) + "-bg";
+      if(book.value!.status == "Réservable") {
+        availabilityClass.value = availabilityClass.value + " open-modal";
+      }
       buttonLabel.value = BooksService.getBookStatusAction(book.value!);
     }).catch((error) => {
       console.log(error);
@@ -27,15 +45,16 @@ export default {
       book,
       isBookFound,
       availabilityClass,
-      buttonLabel
+      buttonLabel,
+      librariesAvailable
     }
   },
   methods:
-    {
-      buttonClick() {
-        BooksService.reserveBook(this.book!);
+      {
+        buttonClick() {
+          BooksService.reserveBook(this.book!);
+        }
       }
-    }
 }
 </script>
 
@@ -54,7 +73,31 @@ export default {
         <div>
           <p class="infos">{{ book.date }} - {{ book.editor }} - {{ book.pages }} pages</p>
         </div>
-        <button class="colored-button" :class="availabilityClass" @click="buttonClick">
+        <button class="colored-button" data-modal-target=".my-modal" :class="availabilityClass" @click="buttonClick">
+          {{ buttonLabel }}
+        </button>
+      </div>
+    </div>
+    <div class="modal my-modal flat-border" tabindex="-1">
+      <div class="modal-header">
+        <h2>Réserver</h2>
+        <button type="button" class="close-modal close-button" data-modal-target=".my-modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h3>Date de réservation</h3>
+        <input type="date" id="start" name="trip-start"
+               value="2021-07-22"
+               min="2021-01-01" max="2021-12-31">
+        <div class="spacing"></div>
+        <h3>Bibliothèque</h3>
+        <div class="libraries-selection">
+          <div v-for="library in librariesAvailable">
+            <selectable-button :label="library.name + ' (' + library.number+' '+((library.number > 1)?'exemplaires':'exemplaire')+')'" :value="library" :enabled="library.number>0"></selectable-button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="colored-button" data-modal-target=".my-modal" :class="availabilityClass" @click="buttonClick">
           {{ buttonLabel }}
         </button>
       </div>
@@ -68,7 +111,7 @@ export default {
     <span>Pages : {{ book.pages }}</span>
     <br>
     <div class="genres">
-      <div class="genre" v-for="genre in book.genres" >
+      <div class="genre" v-for="genre in book.genres">
         <checkable-tag :label="genre" :value="genre"></checkable-tag>
       </div>
     </div>
@@ -116,7 +159,7 @@ export default {
       color: $text-light
     }
 
-    .colored-button{
+    .colored-button {
       margin-top: $spacing;
     }
   }
@@ -125,12 +168,36 @@ export default {
 .genres {
   display: flex;
   flex-wrap: wrap;
-  .genre{
+
+  .genre {
     flex-grow: 1;
+
     button {
       width: calc(100% - 2 * $spacing-small);
       margin: $spacing-small 0;
     }
+  }
+}
+
+.modal{
+  top: 30%;
+  .modal-header{
+    padding: $spacing-separation;
+  }
+  .modal-body{
+    padding: $spacing-separation;
+    .libraries-selection{
+      div{
+        margin: $spacing 0;
+        button{
+          width: 100%;
+          font-size: $interactable-text-size;
+        }
+      }
+    }
+  }
+  .modal-footer{
+    padding: $spacing-separation;
   }
 }
 </style>

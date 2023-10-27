@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <button :class="{checked: checked}" @click="checked = !checked">
+  <button class="flat-border" :class="{checked: checked}" @click="checked = !checked">
     <span>{{label}}</span>
   </button>
 </template>
@@ -14,8 +14,6 @@
 <style lang="scss" scoped>
 @import "src/assets/scss/variables";
 button{
-  border: $corner-thickness solid $light-dark;
-  border-radius: $corner-radius;
   padding: 0 $spacing;
   background-color: white;
   color: $dark;
