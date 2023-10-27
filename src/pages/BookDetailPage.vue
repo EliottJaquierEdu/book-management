@@ -1,30 +1,49 @@
 <script lang="ts">
 import BooksService from "../services/BooksService.ts";
+import {ref} from "vue";
+import Book from "../models/Book.ts";
+import {useRoute} from "vue-router";
 import CheckableTag from "../components/CheckableTag.vue";
 
 export default {
   components: {CheckableTag},
-  data() {
-    return {
-      //...
-      book: null
-    };
-  },
-  created() {
-    new BooksService().getBooks().then((books) => {
-      this.book = (books.find((book) => book.title === this.$route.params.id));
+  setup() {
+    const book = ref(undefined as unknown as Book);
+    const isBookFound = ref(true);
+    const route = useRoute()
+    const availabilityClass = ref("");
+    const buttonLabel = ref("");
+    BooksService.getBooks().then((books) => {
+      const findBool = (books.find((book) => book.title === route.params["id"])) as Book | undefined;
+      isBookFound.value = findBool !== undefined;
+      book.value = findBool as Book;
+      availabilityClass.value = BooksService.getBookStatusColor(book.value!)+ "-bg";
+      buttonLabel.value = BooksService.getBookStatusAction(book.value!);
     }).catch((error) => {
       console.log(error);
+      isBookFound.value = false;
     });
-  }
-};
+    return {
+      book,
+      isBookFound,
+      availabilityClass,
+      buttonLabel
+    }
+  },
+  methods:
+    {
+      buttonClick() {
+        BooksService.reserveBook(this.book!);
+      }
+    }
+}
 </script>
 
 <template>
-  <div v-if="book == null">
+  <div v-if="!isBookFound">
     <h1>Livre introuvable!</h1>
   </div>
-  <div v-else>
+  <div v-else-if="book">
     <div class="book-row">
       <div class="book-image">
         <img class="flat-border" :src="book.image" alt="book.title">
@@ -35,9 +54,9 @@ export default {
         <div>
           <p class="infos">{{ book.date }} - {{ book.editor }} - {{ book.pages }} pages</p>
         </div>
-        <div>
-          <p>{{ book.status }}</p>
-        </div>
+        <button class="colored-button" :class="availabilityClass" @click="buttonClick">
+          {{ buttonLabel }}
+        </button>
       </div>
     </div>
     <div class="spacing"></div>
@@ -95,6 +114,10 @@ export default {
 
     .infos {
       color: $text-light
+    }
+
+    .colored-button{
+      margin-top: $spacing;
     }
   }
 }

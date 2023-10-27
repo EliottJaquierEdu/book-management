@@ -9,7 +9,7 @@ body {
 }
 
 .main-content{
-    margin: 0 $content-margin;
+    margin: 0 $content-margin $content-margin $content-margin;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -30,6 +30,29 @@ h3 {
   padding: 0;
 }
 
+.spacing{
+    margin: $spacing-separation;
+}
+
+.flat-border{
+  border: $corner-thickness solid $light-dark;
+  border-radius: $corner-radius;
+}
+
+.colored-button{
+  width: 100%;
+  background-color: $primary;
+  border: none;
+  border-radius: $corner-radius;
+  padding: $spacing;
+  color: $lightest;
+  transition: all 0.3s;
+  font-size: $button-text-size;
+  &:hover{
+    background-color: rgba($primary, 0.5);
+  }
+}
+
 .green {
   color: $green;
 }
@@ -42,11 +65,23 @@ h3 {
   color: $red;
 }
 
-.spacing{
-    margin: $spacing-separation;
+.green-bg {
+  background-color: $green;
+  &:hover{
+    background-color: rgba($green, 0.5);
+  }
 }
 
-.flat-border{
-  border: $corner-thickness solid $light-dark;
-  border-radius: $corner-radius;
+.orange-bg {
+  background-color: $orange;
+  &:hover{
+    background-color: rgba($orange, 0.5);
+  }
+}
+
+.red-bg {
+  background-color: $red;
+  &:hover{
+    background-color: rgba($red, 0.5);
+  }
 }

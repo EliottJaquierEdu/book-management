@@ -115,7 +115,7 @@ const filtersList = ref([
 
 const books: any = ref(null);
 function fetchBooks(){
-  new BooksService().getBooks().then((response) => {
+  BooksService.getBooks().then((response) => {
     books.value = response;
   }).catch((error) => {
     console.log(error);
