@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div id="search">
+  <div id="search" class="flat-border">
     <i class="fa-solid fa-magnifying-glass"></i>
     <input type="search" placeholder="Rechercher des livres...">
   </div>
@@ -13,11 +13,9 @@
 #search {
   display: flex;
   align-items: center;
-  background-color: $lightest;
-  border: $corner-thickness solid $light-dark;
   border-radius: $corner-radius;
   width: 100%;
-  margin: 2rem 0;
+  margin: $button-text-size 0;
 
   input {
     border: none;

@@ -30,6 +30,13 @@ h3 {
   padding: 0;
 }
 
+input[type="date"]{
+  @extend .flat-border;
+  background-color: $lightest;
+  width: 100%;
+  margin: $button-text-size 0;
+}
+
 .spacing{
     margin: $spacing-separation;
 }
