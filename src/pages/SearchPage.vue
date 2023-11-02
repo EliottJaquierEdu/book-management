@@ -154,10 +154,8 @@ fetchBooks();
   flex-wrap: wrap;
 }
 .filter-category-item{
-  flex-grow: 1;
   button{
-    width: calc(100% - 2 * $spacing-small);
-    margin: $spacing-small 0;
+    margin: $spacing-small;
   }
 }
 </style>
