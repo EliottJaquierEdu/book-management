@@ -167,6 +167,8 @@ fetchBooks();
   justify-content: space-between;
   .book-result{
     margin-bottom: $spacing-separation;
+    width: 175px;
+    max-width: calc(50% - 10px);
   }
 }
 </style>

@@ -47,7 +47,6 @@ export default {
 <style scoped lang="scss">
 @import "src/assets/scss/variables";
 .book-cover{
-  width: 175px;
   margin-bottom: $content-margin;
   a{
     text-decoration: none;
