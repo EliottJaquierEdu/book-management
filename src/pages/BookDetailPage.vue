@@ -6,6 +6,7 @@ import {useRoute} from "vue-router";
 import CheckableTag from "../components/CheckableTag.vue";
 import SelectableButton from "../components/SelectableButton.vue";
 import BookCover from "../components/BookCover.vue";
+import VueRouter from 'vue-router'
 
 export default {
   components: {BookCover, SelectableButton, CheckableTag},
@@ -56,7 +57,9 @@ export default {
   methods:
       {
         buttonClick() {
-          BooksService.reserveBook(this.book!);
+
+          setTimeout(() => {
+            this.$router.push(path :'/BookBorrowed', query: { bookReserved: BooksService.reservedBook(this.book!)})}, 500)
         }
       }
 }
@@ -77,7 +80,7 @@ export default {
         <div>
           <p class="infos">{{ book.date }} - {{ book.editor }} - {{ book.pages }} pages</p>
         </div>
-        <button class="colored-button" data-modal-target=".my-modal" :class="availabilityClass" @click="buttonClick">
+        <button class="colored-button" data-modal-target=".my-modal" :class="availabilityClass">
           {{ buttonLabel }}
         </button>
       </div>
@@ -104,7 +107,7 @@ export default {
         </div>
       </div>
       <div class="modal-footer">
-        <button class="colored-button" data-modal-target=".my-modal" :class="availabilityClass" @click="buttonClick">
+        <button id="colored-button" class=" colored-button close-modal" data-modal-target=".my-modal" aria-label="Close" @click="buttonClick">
           {{ buttonLabel }}
         </button>
       </div>
@@ -217,6 +220,22 @@ export default {
 
   .modal-footer {
     padding: $spacing-separation;
+  }
+}
+
+
+
+#colored-button {
+  width: 100%;
+  background-color: $primary;
+  border: none;
+  border-radius: $corner-radius;
+  padding: $spacing;
+  color: $lightest;
+  transition: all 0.3s;
+  font-size: $button-text-size;
+  &:hover{
+    background-color: rgba($primary, 0.5);
   }
 }
 </style>
