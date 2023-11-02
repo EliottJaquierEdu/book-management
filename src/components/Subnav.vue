@@ -28,13 +28,13 @@ export default {
 <template>
   <div class="subnav">
     <router-link :to="{ name: 'SearchPage', params:{} }">
-      <div class="subnav-title">
-          <h3>Home</h3>
+      <div class="subnav-title" @click="close">
+          <h3>Accueil</h3>
           <i class="fa-solid fa-chevron-right"></i>
       </div>
     </router-link>
     <div class="subnav-title" @click="toggleSubnav('title')">
-      <h3>Books</h3>
+      <h3>Livres</h3>
       <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'title' }"></i>
     </div>
     <div class="subnav-content" :class="{ 'active': subnavOpen === 'title' }">
@@ -46,7 +46,7 @@ export default {
       </router-link>
       <router-link :to="{ name: 'BookBorrowed' , params:{} }">
         <div class="subnav-child" @click="close">
-          Books
+          Mes livres
           <i class="fa-solid fa-chevron-right"></i>
         </div>
       </router-link>
