@@ -1,20 +1,16 @@
 <script setup lang="ts">
 import {ref, toRefs} from 'vue';
-import TopBar from "../components/TopBar.vue";
-import SearchBar from "../components/SearchBar.vue";
-import CheckableTag from "../components/CheckableTag.vue";
 import BooksService from "../services/BooksService.ts";
 import BorrowingBook from "../components/BorrowingBook.vue";
 import ReservedBook from "../components/ReservedBook.vue";
-import Book from "../models/Book";
 
 const props = defineProps(['bookReserved']);
 
 const bookedbooks: any = ref(null);
 async  function  fetchBooks(){
-  const response = await fetch('src/assets/bookedBook.json');
-  bookedbooks.value =  await response.json();
+  bookedbooks.value = (await BooksService.getBooks()).splice(0, 4);
 }
+
 fetchBooks();
 </script>
 
