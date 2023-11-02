@@ -19,6 +19,7 @@ fetchBooks();
 </script>
 
 <template>
+  <div class="spacing"></div>
   <h2>Mes livres empruntés</h2>
   <div class="books">
     <div class="book-result" v-for="book in bookedbooks">
