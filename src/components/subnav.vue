@@ -5,19 +5,26 @@
       <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'title' }"></i>
     </div>
     <div class="subnav-content" :class="{ 'active': subnavOpen === 'title' }">
-      <div class="subnav-child" @click="toggleSubnav('search')">
-        <a href="#/">Search</a>
-        <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'search' }"></i>
-      </div>
-      <div class="subnav-child" @click="toggleSubnav('books')">
-        <a href="#/">Books</a>
-        <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'books' }"></i>
-      </div>
+      <router-link :to="{ name: 'BookBorrowed', params:{} }">
+        <div class="subnav-child" @click="toggleSubnav('search')">
+          <a href="#/">Search</a>
+          <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'search' }"></i>
+        </div>
+      </router-link>
+      <router-link :to="{ name: 'BookBorrowed' , params:{} }">
+        <div class="subnav-child" @click="toggleSubnav('books')">
+          <a href="#/">Books</a>
+          <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'books' }"></i>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import Book from "../models/Book";
+import {ref, toRefs} from 'vue';
+
 export default {
   name: "subnav",
   data() {
@@ -37,7 +44,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@import "src/assets/scss/variables";
 #subnav {
   padding: 0.5rem 1rem;
   background-color: inherit;
@@ -58,11 +66,16 @@ export default {
   font-family: inherit;
   margin: 0;
   text-align: left;
-  border-left: 1px solid grey;
+  border-left: 1px solid $light;
+}
+
+.subnav-child {
+  font-size: $small-text-size;
+  color: $text-light;
 }
 
 .subnav-child > a {
-  color: grey;
+  color: $text-light;
   width: 100%;
 }
 

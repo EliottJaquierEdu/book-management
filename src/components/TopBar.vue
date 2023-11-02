@@ -67,15 +67,15 @@ export default defineComponent({
   width: 0;
   height: 100%;
   padding-left: 0.3rem;
-  background: white;
+  background: $lightest;
   transition: width 0.3s ease;
-  display: none; /* Ajoutez cette ligne pour rendre le menu invisible par défaut */
+  display: none;
 }
 
 .ham-menu.open {
   width: 65%;
   height: 100%;
-  display: block; /* Ajoutez cette ligne pour afficher le menu lorsqu'il est ouvert */
+  display: block;
 }
 
 #ham-menu__top-bar {

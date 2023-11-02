@@ -13,6 +13,11 @@ const routes = [
         path: "/book/:id",
         name: "BookDetailPage",
         component: () => import("./pages/BookDetailPage.vue")
+    },
+    {
+        path: "/BookBorrowed",
+        name: "BookBorrowed",
+        component: () => import("./pages/BookBorrowed.vue")
     }
 ];
 

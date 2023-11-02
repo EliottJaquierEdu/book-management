@@ -1,7 +1,6 @@
-<script lang="ts">
+<script setup lang="ts">
 import {ref} from "vue";
 </script>
-
 
 <template>
   <div id="search">
@@ -10,13 +9,14 @@ import {ref} from "vue";
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@import "src/assets/scss/variables";
 #search {
   display: flex;
   align-items: center;
-  background-color: $primary;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: $lightest ;
+  border: $corner-thickness solid $light-dark;
+  border-radius: $corner-radius;
   width: 100%;
   margin: 2rem 0;
 }
@@ -31,7 +31,12 @@ import {ref} from "vue";
   padding: 0.5rem;
 }
 
+#search i {
+  margin: 0 1rem;
+  color: $primary;
+}
+
 #search input::placeholder {
-  color: #aaa;
+  color: $text;
 }
 </style>
