@@ -1,31 +1,9 @@
-<template>
-  <div id="subnav">
-    <div id="subnav-title" @click="toggleSubnav('title')">
-      <h3>Book</h3>
-      <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'title' }"></i>
-    </div>
-    <div class="subnav-content" :class="{ 'active': subnavOpen === 'title' }">
-      <router-link :to="{ name: 'BookBorrowed', params:{} }">
-        <div class="subnav-child" @click="toggleSubnav('search')">
-          <a href="#/">Search</a>
-          <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'search' }"></i>
-        </div>
-      </router-link>
-      <router-link :to="{ name: 'BookBorrowed' , params:{} }">
-        <div class="subnav-child" @click="toggleSubnav('books')">
-          <a href="#/">Books</a>
-          <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'books' }"></i>
-        </div>
-      </router-link>
-    </div>
-  </div>
-</template>
-
-<script>
-import Book from "../models/Book";
-import {ref, toRefs} from 'vue';
+<script lang="ts">
 
 export default {
+  props: {
+    closeDelegate: (Object as Function)!
+  },
   name: "subnav",
   data() {
     return {
@@ -39,38 +17,73 @@ export default {
       } else {
         this.subnavOpen = elementId; // Ouvrir le sous-menu correspondant
       }
+    },
+    close(){
+      this.closeDelegate();
     }
   }
 };
 </script>
 
+<template>
+  <div class="subnav">
+    <router-link :to="{ name: 'SearchPage', params:{} }">
+      <div class="subnav-title">
+          <h3>Home</h3>
+          <i class="fa-solid fa-chevron-right"></i>
+      </div>
+    </router-link>
+    <div class="subnav-title" @click="toggleSubnav('title')">
+      <h3>Books</h3>
+      <i class="fa-solid fa-chevron-right" :class="{ 'arrow__active': subnavOpen === 'title' }"></i>
+    </div>
+    <div class="subnav-content" :class="{ 'active': subnavOpen === 'title' }">
+      <router-link :to="{ name: 'SearchPage', params:{} }">
+        <div class="subnav-child" @click="close">
+          Recherche
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </router-link>
+      <router-link :to="{ name: 'BookBorrowed' , params:{} }">
+        <div class="subnav-child" @click="close">
+          Books
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </router-link>
+    </div>
+  </div>
+</template>
+
 <style scoped lang="scss">
 @import "src/assets/scss/variables";
-#subnav {
-  padding: 0.5rem 1rem;
+.subnav {
+  padding: $spacing-separation $content-margin;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
   text-align: left;
+  a{
+    color: $text;
+  }
 }
 
-/* Style the subnav content - positioned absolute */
+.subnav-title{
+  padding: 0.5rem;
+  h3{
+    font-size: $book-subtitle-size;
+  }
+}
+
 .subnav-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  width: 90%;
-  z-index: 1;
-  padding: 0.5rem 1rem;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-  text-align: left;
+  margin-left: 0.5rem;
+  width: calc(100% - 10px);
   border-left: 1px solid $light;
+  display:none;
 }
 
 .subnav-child {
-  font-size: $small-text-size;
+  padding: $spacing-separation;
+  font-size: $interactable-text-size;
   color: $text-light;
 }
 
@@ -83,7 +96,7 @@ export default {
   display: block;
 }
 
-#subnav-title,
+.subnav-title,
 .subnav-child {
   display: flex;
   justify-content: space-between;

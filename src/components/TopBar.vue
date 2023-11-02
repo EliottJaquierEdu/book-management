@@ -1,11 +1,15 @@
 <template>
   <div id="top-bar">
-    <div @click="toggleHamMenu" :class="{ 'ham-menu__active': hamMenuOpen }">
+    <div id="burger" @click="toggleHamMenu" :class="{ 'ham-menu__active': hamMenuOpen }">
       <i class="fa-solid fa-bars"></i>
     </div>
     <div>
-      <i class="fa-solid fa-search"></i>
-      <i class="fa-solid fa-user"></i>
+      <router-link :to="{ name: 'SearchPage', params:{} }">
+        <i class="fa-solid fa-search"></i>
+      </router-link>
+      <router-link :to="{ name: 'BookBorrowed', params:{} }">
+        <i class="fa-solid fa-user"></i>
+      </router-link>
     </div>
   </div>
   <div class="ham-menu" :class="{ 'open': hamMenuOpen }">
@@ -14,9 +18,7 @@
         <i class="fa-solid fa-xmark" @click="closeHamMenu"></i>
       </div>
     </div>
-    <div id="menu-nav">
-      <subnav></subnav>
-    </div>
+      <subnav :close-delegate="closeHamMenu"></subnav>
   </div>
 </template>
 
@@ -57,25 +59,32 @@ export default defineComponent({
     font-size: 1.5rem;
     margin: 0.5rem 0.5rem;
   }
+  a{
+    color: $text;
+  }
+  #burger{
+    color: $text;
+    cursor: pointer;
+  }
 }
 
 .ham-menu {
   z-index: 10;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 0;
-  height: 100%;
   padding-left: 0.3rem;
   background: $lightest;
-  transition: width 0.3s ease;
-  display: none;
+  height: 100%;
+  width: 350px;
+  max-width: 100%;
+  display: block;
+  transform: translate(-100%);
+  transition: all 0.3s ease;
 }
 
 .ham-menu.open {
-  width: 65%;
-  height: 100%;
-  display: block;
+  transform: translate(0%);
 }
 
 #ham-menu__top-bar {
