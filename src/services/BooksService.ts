@@ -1,6 +1,7 @@
 import Book from "../models/Book.ts";
 
 export default class BooksService {
+    static reservedBooks : Book[] = [];
     static async getBooks():Promise<Book[]> {
         const response = await fetch('src/assets/books.json');
         return await response.json();
@@ -34,7 +35,7 @@ export default class BooksService {
                 return "Indisponible";
         }
     }
-    public static reservedBook(book: Book) {
-        return book;
+    public static reserveBook(book: Book) {
+        BooksService.reservedBooks.push(book);
     }
 }

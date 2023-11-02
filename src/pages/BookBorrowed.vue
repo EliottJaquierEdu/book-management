@@ -2,13 +2,13 @@
 import {ref, toRefs} from 'vue';
 import BooksService from "../services/BooksService.ts";
 import BorrowingBook from "../components/BorrowingBook.vue";
-import ReservedBook from "../components/ReservedBook.vue";
+import ReservingBook from "../components/ReservingBook.vue";
 
-const props = defineProps(['bookReserved']);
-
-const bookedbooks: any = ref(null);
+const borrowedBooks: any = ref(null);
+const reservedBooks: any = ref(null);
 async  function  fetchBooks(){
-  bookedbooks.value = (await BooksService.getBooks()).splice(0, 4);
+  borrowedBooks.value = (await BooksService.getBooks()).splice(0, 4);
+  reservedBooks.value = BooksService.reservedBooks;
 }
 
 fetchBooks();
@@ -18,14 +18,14 @@ fetchBooks();
   <div class="spacing"></div>
   <h2>Mes livres empruntés</h2>
   <div class="books">
-    <div class="book-result" v-for="book in bookedbooks">
+    <div class="book-result" v-for="book in borrowedBooks">
       <BorrowingBook :book="book" ></BorrowingBook>
     </div>
   </div>
   <h2>Livres réservés</h2>
   <div class="books">
-    <div class="book-result" v-for="book in props.bookReserved">
-      <ReservedBook :book="book"></ReservedBook>
+    <div class="book-result" v-for="book in reservedBooks">
+      <ReservingBook :book="book"></ReservingBook>
     </div>
   </div>
 </template>
