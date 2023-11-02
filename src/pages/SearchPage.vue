@@ -137,6 +137,7 @@ fetchBooks();
     </div>
   </div>
   <h2>Résultats</h2>
+  <div class="spacing"></div>
   <div class="books-cover">
     <div class="book-result" v-for="book in books">
       <BookCover :book="book"></BookCover>
