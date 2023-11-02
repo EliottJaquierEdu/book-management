@@ -1,27 +1,34 @@
 <script setup lang="ts">
-import {ref} from 'vue'
+import {ref, toRefs} from 'vue';
 import TopBar from "../components/TopBar.vue";
 import SearchBar from "../components/SearchBar.vue";
 import CheckableTag from "../components/CheckableTag.vue";
 import BooksService from "../services/BooksService.ts";
-import BookCover from "../components/BookCover.vue";
+import BorrowingBook from "../components/BorrowingBook.vue";
+import ReservedBook from "../components/ReservedBook.vue";
+import Book from "../models/Book";
 
-const books: any = ref(null);
-function fetchBooks(){
-  BooksService.getBooks().then((response) => {
-    books.value = response;
-  }).catch((error) => {
-    console.log(error);
-  });
+const props = defineProps(['bookReserved']);
+
+const bookedbooks: any = ref(null);
+async  function  fetchBooks(){
+  const response = await fetch('src/assets/bookedBook.json');
+  bookedbooks.value =  await response.json();
 }
 fetchBooks();
 </script>
 
 <template>
-  <h2>Résultats</h2>
+  <h2>Mes livres empruntés</h2>
   <div class="books">
-    <div class="book-result" v-for="book in books">
-      <BookCover :book="book"></BookCover>
+    <div class="book-result" v-for="book in bookedbooks">
+      <BorrowingBook :book="book" ></BorrowingBook>
+    </div>
+  </div>
+  <h2>Livres réservés</h2>
+  <div class="books">
+    <div class="book-result" v-for="book in props.bookReserved">
+      <ReservedBook :book="book"></ReservedBook>
     </div>
   </div>
 </template>
@@ -43,10 +50,8 @@ fetchBooks();
   }
 }
 .books{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   .book-result{
+    width: 100%;
     margin-bottom: $spacing-separation;
   }
 }

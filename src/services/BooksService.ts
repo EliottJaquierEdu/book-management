@@ -34,8 +34,7 @@ export default class BooksService {
                 return "Indisponible";
         }
     }
-
-    public static reserveBook(book: Book) {
-        //TODO : Cosa
+    public static reservedBook(book: Book) {
+        return book;
     }
 }
