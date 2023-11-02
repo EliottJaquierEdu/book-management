@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import TopBar from "../components/TopBar.vue";
 import SearchBar from "../components/SearchBar.vue";
 import CheckableTag from "../components/CheckableTag.vue";
 import BooksService from "../services/BooksService.ts";
@@ -138,7 +137,7 @@ fetchBooks();
     </div>
   </div>
   <h2>Résultats</h2>
-  <div class="books">
+  <div class="books-cover">
     <div class="book-result" v-for="book in books">
       <BookCover :book="book"></BookCover>
     </div>
@@ -159,16 +158,6 @@ fetchBooks();
   button{
     width: calc(100% - 2 * $spacing-small);
     margin: $spacing-small 0;
-  }
-}
-.books{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .book-result{
-    margin-bottom: $spacing-separation;
-    width: 175px;
-    max-width: calc(50% - 10px);
   }
 }
 </style>

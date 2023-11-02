@@ -85,3 +85,14 @@ h3 {
     background-color: rgba($red, 0.5);
   }
 }
+
+.books-cover{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .book-result{
+    margin-bottom: $spacing-separation;
+    width: 175px;
+    max-width: calc(50% - 10px);
+  }
+}
