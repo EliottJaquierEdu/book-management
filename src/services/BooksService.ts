@@ -25,7 +25,7 @@ export default class BooksService {
             case "Réservable":
                 return "Réserver";
             case "Disponible":
-                return "En magasin uniquement";
+                return "En librairie uniquement";
             case "En transit":
                 return "Momentanément indisponible";
             case "Plus en stock":

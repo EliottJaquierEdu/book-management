@@ -14,9 +14,7 @@
   </div>
   <div class="ham-menu" :class="{ 'open': hamMenuOpen }">
     <div id="ham-menu__top-bar">
-      <div>
         <i class="fa-solid fa-xmark" @click="closeHamMenu"></i>
-      </div>
     </div>
       <subnav :close-delegate="closeHamMenu"></subnav>
   </div>
@@ -24,7 +22,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import Subnav from "./subnav.vue";
+import Subnav from "./Subnav.vue";
 
 export default defineComponent({
   name: "TopBar",
@@ -66,6 +64,10 @@ export default defineComponent({
     color: $text;
     cursor: pointer;
   }
+  .ham-menu__active {
+    width: 10%;
+    height: 100%;
+  }
 }
 
 .ham-menu {
@@ -81,27 +83,21 @@ export default defineComponent({
   display: block;
   transform: translate(-100%);
   transition: all 0.3s ease;
-}
-
-.ham-menu.open {
-  transform: translate(0%);
-}
-
-#ham-menu__top-bar {
-  display: flex;
-  justify-content: right;
-  align-items: center;
-  padding: 0 0.5rem;
-  height: 3rem;
-  border-bottom: 1px solid $light-dark;
-  i {
-    font-size: 1.5rem;
-    margin: 0.5rem 0.5rem;
+  #ham-menu__top-bar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding: 0 0.5rem;
+    height: 3rem;
+    border-bottom: 1px solid $light-dark;
+    i {
+      cursor: pointer;
+      font-size: 1.5rem;
+      margin: 0.5rem 0.5rem;
+    }
   }
-}
-
-.ham-menu__active {
-  width: 10%;
-  height: 100%;
+  &.open {
+    transform: translate(0%);
+  }
 }
 </style>
