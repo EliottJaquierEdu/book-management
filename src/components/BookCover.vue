@@ -34,9 +34,7 @@ export default {
 <template>
   <div class="book-cover">
     <router-link :to="{ name: 'BookDetailPage', params: { id: book!.title } }">
-      <div class="img-container">
-        <div><img class="flat-border" :src="book!.image" :alt="book!.title"></div>
-      </div>
+      <img class="flat-border" :src="book!.image" :alt="book!.title">
       <div class="book-title"><h3>{{ book!.title }}</h3></div>
       <div class="book-author">{{ book!.author }}</div>
       <div class="book-availability"><i class="fa-solid fa-circle" :class="availabilityClass"></i> {{ book!.status }}</div>
@@ -50,12 +48,6 @@ export default {
   margin-bottom: $content-margin;
   a{
     text-decoration: none;
-  }
-  .img-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    height: 263px;
   }
   .book-title{
     margin-top: $spacing;
