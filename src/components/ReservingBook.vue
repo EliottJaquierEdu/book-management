@@ -31,7 +31,7 @@ export default {
           Réservé jusqu'au {{dateString}}
         </div>
         <button class="colored-button" data-modal-target=".my-modal" :class="availabilityClass" @click="buttonClick">
-          Emprunter
+          <i class="fa-solid fa-qrcode"></i> Emprunter
         </button>
       </div>
     </div>
