@@ -30,6 +30,13 @@ h3 {
   padding: 0;
 }
 
+input[type="date"]{
+  @extend .flat-border;
+  background-color: $lightest;
+  width: 100%;
+  margin: $button-text-size 0;
+}
+
 .spacing{
     margin: $spacing-separation;
 }
@@ -83,5 +90,14 @@ h3 {
   background-color: $red;
   &:hover{
     background-color: rgba($red, 0.5);
+  }
+}
+
+.books-cover{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(175px, 40%), 1fr));
+  gap: $spacing-separation;
+  .book-result{
+    align-self: end;
   }
 }

@@ -5,10 +5,12 @@ import Book from "../models/Book.ts";
 import {useRoute} from "vue-router";
 import CheckableTag from "../components/CheckableTag.vue";
 import SelectableButton from "../components/SelectableButton.vue";
+import BookCover from "../components/BookCover.vue";
 
 export default {
-  components: {SelectableButton, CheckableTag},
+  components: {BookCover, SelectableButton, CheckableTag},
   setup() {
+    const books = ref(undefined as unknown as Book[]);
     const book = ref(undefined as unknown as Book);
     const isBookFound = ref(true);
     const route = useRoute()
@@ -28,12 +30,13 @@ export default {
         "number": 0
       }
     ]
-    BooksService.getBooks().then((books) => {
-      const findBool = (books.find((book) => book.title === route.params["id"])) as Book | undefined;
+    BooksService.getBooks().then((allBooks) => {
+      books.value = allBooks;
+      const findBool = (allBooks.find((book) => book.title === route.params["id"])) as Book | undefined;
       isBookFound.value = findBool !== undefined;
       book.value = findBool as Book;
       availabilityClass.value = BooksService.getBookStatusColor(book.value!) + "-bg";
-      if(book.value!.status == "Réservable") {
+      if (book.value!.status == "Réservable") {
         availabilityClass.value = availabilityClass.value + " open-modal";
       }
       buttonLabel.value = BooksService.getBookStatusAction(book.value!);
@@ -43,6 +46,7 @@ export default {
     });
     return {
       book,
+      books,
       isBookFound,
       availabilityClass,
       buttonLabel,
@@ -81,7 +85,8 @@ export default {
     <div class="modal my-modal flat-border" tabindex="-1">
       <div class="modal-header">
         <h2>Réserver</h2>
-        <button type="button" class="close-modal close-button" data-modal-target=".my-modal" aria-label="Close"></button>
+        <button type="button" class="close-modal close-button" data-modal-target=".my-modal"
+                aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <h3>Date de réservation</h3>
@@ -92,7 +97,9 @@ export default {
         <h3>Bibliothèque</h3>
         <div class="libraries-selection">
           <div v-for="library in librariesAvailable">
-            <selectable-button :label="library.name + ' (' + library.number+' '+((library.number > 1)?'exemplaires':'exemplaire')+')'" :value="library" :enabled="library.number>0"></selectable-button>
+            <selectable-button
+                :label="library.name + ' (' + library.number+' '+((library.number > 1)?'exemplaires':'exemplaire')+')'"
+                :value="library" :enabled="library.number>0"></selectable-button>
           </div>
         </div>
       </div>
@@ -113,6 +120,13 @@ export default {
     <div class="genres">
       <div class="genre" v-for="genre in book.genres">
         <checkable-tag :label="genre" :value="genre"></checkable-tag>
+      </div>
+    </div>
+    <div class="spacing"></div>
+    <h2>Livres similaires</h2>
+    <div class="books-cover">
+      <div class="book-result" v-for="book in books">
+        <BookCover :book="book"></BookCover>
       </div>
     </div>
   </div>
@@ -179,24 +193,29 @@ export default {
   }
 }
 
-.modal{
+.modal {
   top: 30%;
-  .modal-header{
+
+  .modal-header {
     padding: $spacing-separation;
   }
-  .modal-body{
+
+  .modal-body {
     padding: $spacing-separation;
-    .libraries-selection{
-      div{
+
+    .libraries-selection {
+      div {
         margin: $spacing 0;
-        button{
+
+        button {
           width: 100%;
           font-size: $interactable-text-size;
         }
       }
     }
   }
-  .modal-footer{
+
+  .modal-footer {
     padding: $spacing-separation;
   }
 }
